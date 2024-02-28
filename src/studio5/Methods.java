@@ -14,7 +14,7 @@ public class Methods {
 	 * @return the Euclidean distance between (x1,y1) and (x2,y2)
 	 */
 	public static double distanceBetween(double x1, double y1, double x2, double y2) {
-		double distance = 0;
+		double distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 		// FIXME: Hint use Math methods (e.g. Math.sqrt) to compute the distance
 		
 		return distance;
@@ -34,17 +34,20 @@ public class Methods {
 		// TODO: Draw the remaining rings of the bull's eye
 		// Blue ring with 3.0/4.0 the radius
 		// suggested rgb values: 0, 109, 219
-
+		StdDraw.setPenColor(StdDraw.BOOK_BLUE);
+		StdDraw.filledCircle(x, y, radius * 3.0/4.0);
 		
 
 		// Red ring with 1.0/2.0 the radius
 		// suggested rgb values: 146, 0, 0
-
+		StdDraw.setPenColor(StdDraw.RED);
+		StdDraw.filledCircle(x, y, radius * 1.0/2.0);
 		
 
 		// Yellow ring with 1.0/4.0 the radius
 		// suggested rgb values: 255, 255, 109
-
+		StdDraw.setPenColor(StdDraw.YELLOW);
+		StdDraw.filledCircle(x, y, radius * 1.0/4.0);
 		
 	}
 
@@ -62,9 +65,20 @@ public class Methods {
 	public static String substituteAll(String source, char target, String replacement) {
 		String result = "";
 		// TODO: Finish this method
-		
+		char [] charArray = source.toCharArray();
+		for(int i=0; i<source.length(); i++) {
+			if (charArray[i] == target) {
+				result = result + replacement; 
+			}
+			else {
+				result = result + charArray[i];
+			}
+		}
 		return result;
-	}
+		}
+		
+	
+	
 
 	/**
 	 * Compute the sum of elements in an array
@@ -75,10 +89,11 @@ public class Methods {
 	public static int arraySum(int[] values) {
 		int sum = 0;
 		// FIXME: Compute the sum of the values in an array
-		
+		for (int i=0; i<values.length; i++) {
+		sum = sum + values[i]; 
+	}
 		return sum;
 	}
-
 	/**
 	 * Return an array of a given size filled with the provided value
 	 * 
@@ -94,6 +109,7 @@ public class Methods {
 
 		return values;
 	}
+	
 
 	// TODO: Create an arrayMean method which accepts an int array of values parameter.
 	// TODO: Create a JavaDoc comment for the arrayMean method.
